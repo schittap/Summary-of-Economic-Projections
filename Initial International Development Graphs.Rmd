@@ -1,0 +1,29 @@
+---
+title: "BRB International Development Graphs"
+author: "Siddharth Chittapuram - UID: 606 161 606"
+date: "2025-05-28"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+# jpassets <- read.csv("/Users/siddharth/Downloads/JPNASSETS.csv")
+# jpassets
+# plot(jpassets)
+# print(jpassets)
+library(ggplot2)
+jpinterbankrates <- read.csv("/Users/siddharth/Downloads/IRSTCI01JPQ156N.csv")
+jpinterbankrates
+ggplot(jpinterbankrates, aes(x = as.Date(jpinterbankrates$observation_date), y = jpinterbankrates$IRSTCI01JPQ156N)) + geom_line(color = "blue") + labs(title = "Immediate (Short-Term) Interest Rates for Banks in Japan \non the First Day of Each Month through 2024", x = "Date", y = "Interbank Rate (%)", caption = "Federal Reserve Bank of St. Louis FRED") + theme_minimal()
+
+chinacpi <- read.csv("/Users/siddharth/Downloads/ChinaCPI2024_2025.csv")
+chinacpi
+ggplot(chinacpi, aes(x = as.Date(chinacpi$observation_date), y = chinacpi$CPALTT01CNM659N)) + geom_line(color = "red") + labs(title = "Monthly Changes in Growth Rate from Jan 2024 to May 2025", x = "Month", y = "CPI Growth Rate (%)", caption = "Federal Reserve Bank of St. Louis FRED") + theme_minimal()
+```
+
